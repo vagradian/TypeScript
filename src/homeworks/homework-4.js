@@ -13,10 +13,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// Створіть класи Circle, Rectangle, Square і Triangle.
-// У кожного з них є загальнодоступний метод calculateArea.
-// У кожної фігури є загальнодоступні властивості - колір і назва, які не можна змінювати після створення.
-// У Square і Rectangle зі свого боку є ще додатковий метод print, який виводить рядок із формулою розрахунку площі
 var Shape = /** @class */ (function () {
     function Shape(name, color) {
         this.name = name;
@@ -24,6 +20,9 @@ var Shape = /** @class */ (function () {
     }
     Shape.prototype.calculateArea = function () {
         throw new Error("Method 'calculateArea' must be implemented.");
+    };
+    Shape.prototype.print = function () {
+        throw new Error("Method 'print' must be implemented.");
     };
     return Shape;
 }());
@@ -36,6 +35,9 @@ var Circle = /** @class */ (function (_super) {
     }
     Circle.prototype.calculateArea = function () {
         return Math.PI * Math.pow(this.radius, 2);
+    };
+    Circle.prototype.print = function () {
+        console.log("Formula for area of Circle: \u03C0 * radius^2");
     };
     return Circle;
 }(Shape));
@@ -75,6 +77,9 @@ var Triangle = /** @class */ (function (_super) {
     }
     Triangle.prototype.calculateArea = function () {
         return 0.5 * this.base * this.height;
+    };
+    Triangle.prototype.print = function () {
+        console.log("Formula for area of Triangle: 0.5 * base * height");
     };
     return Triangle;
 }(Shape));
