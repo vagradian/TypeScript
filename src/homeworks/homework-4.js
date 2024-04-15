@@ -18,12 +18,6 @@ var Shape = /** @class */ (function () {
         this.name = name;
         this.color = color;
     }
-    Shape.prototype.calculateArea = function () {
-        throw new Error("Method 'calculateArea' must be implemented.");
-    };
-    Shape.prototype.print = function () {
-        throw new Error("Method 'print' must be implemented.");
-    };
     return Shape;
 }());
 var Circle = /** @class */ (function (_super) {
@@ -62,6 +56,9 @@ var Square = /** @class */ (function (_super) {
     function Square(sideLength, color) {
         return _super.call(this, sideLength, sideLength, color) || this;
     }
+    Square.prototype.calculateArea = function () {
+        return this.width * this.width;
+    };
     Square.prototype.print = function () {
         console.log("Formula for area of Square: sideLength * sideLength");
     };

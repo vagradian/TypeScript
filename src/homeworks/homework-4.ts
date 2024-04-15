@@ -6,25 +6,13 @@ interface Printable {
   print(): void;
 }
 
-class Shape implements Printable {
-  readonly name: string;
-  readonly color: string;
+abstract class Shape {
+  constructor(readonly name: string, readonly color: string) {}
 
-  constructor(name: string, color: string) {
-    this.name = name;
-    this.color = color;
-  }
-
-  calculateArea(): number {
-    throw new Error("Method 'calculateArea' must be implemented.");
-  }
-
-  print(): void {
-    throw new Error("Method 'print' must be implemented.");
-  }
+  abstract calculateArea(): number;
 }
 
-class Circle extends Shape {
+class Circle extends Shape implements Printable {
   readonly radius: number;
 
   constructor(radius: number, color: string) {
@@ -41,7 +29,7 @@ class Circle extends Shape {
   }
 }
 
-class Rectangle extends Shape {
+class Rectangle extends Shape implements Printable {
   readonly width: number;
   readonly height: number;
 
@@ -60,9 +48,13 @@ class Rectangle extends Shape {
   }
 }
 
-class Square extends Rectangle {
+class Square extends Rectangle implements Printable {
   constructor(sideLength: number, color: string) {
     super(sideLength, sideLength, color);
+  }
+
+  calculateArea(): number {
+    return this.width * this.width;
   }
 
   print(): void {
@@ -70,7 +62,7 @@ class Square extends Rectangle {
   }
 }
 
-class Triangle extends Shape {
+class Triangle extends Shape implements Printable {
   readonly base: number;
   readonly height: number;
 
